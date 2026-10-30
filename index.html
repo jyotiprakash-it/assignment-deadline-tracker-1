@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track college assignments, subjects, priorities and deadlines.">
+  <title>Deadline Tracker | Student Planner</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Deadline Tracker home">
+      <span class="brand-icon">✓</span>
+      <span>Deadline<span class="brand-accent">Tracker</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="today-label" id="todayLabel"></span>
+      <span class="student-badge">My Study Space</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL STUDY PLANNER</p>
+        <h1>Stay on top of your deadlines.</h1>
+        <p class="subtitle">Organize your assignments. Reduce the last-minute rush.</p>
+      </div>
+      <div class="welcome-icon" aria-hidden="true">📚</div>
+    </section>
+
+    <section class="stats-grid" aria-label="Assignment summary">
+      <article class="stat-card">
+        <div class="stat-top"><span>Total assignments</span><span>📋</span></div>
+        <p class="stat-number" id="totalCount">0</p>
+        <p class="stat-note">All your tasks</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Pending</span><span>⏳</span></div>
+        <p class="stat-number" id="pendingCount">0</p>
+        <p class="stat-note">Still to complete</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Completed</span><span>✓</span></div>
+        <p class="stat-number" id="completedCount">0</p>
+        <p class="stat-note">Tasks finished</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Overdue</span><span>⚠️</span></div>
+        <p class="stat-number" id="overdueCount">0</p>
+        <p class="stat-note">Past the deadline</p>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">PLAN YOUR WORK</p>
+            <h2 id="formHeading">Add an assignment</h2>
+          </div>
+          <span class="heading-icon">＋</span>
+        </div>
+
+        <form id="assignmentForm">
+          <label for="title">Assignment title *</label>
+          <input id="title" name="title" type="text"
+            placeholder="e.g. Java practical file" maxlength="100" required>
+
+          <label for="subject">Subject *</label>
+          <input id="subject" name="subject" type="text"
+            placeholder="e.g. Operating Systems" maxlength="60" required>
+
+          <div class="form-row">
+            <div>
+              <label for="dueDate">Due date *</label>
+              <input id="dueDate" name="dueDate" type="date" required>
+            </div>
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3" maxlength="500"
+            placeholder="Topics to cover, instructions, etc."></textarea>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" id="submitButton" type="submit">
+              + Add assignment
+            </button>
+            <button class="btn btn-secondary hidden" id="cancelEditButton"
+              type="button">Cancel edit</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="panel-heading list-heading">
+          <div>
+            <p class="eyebrow">YOUR WORKLOAD</p>
+            <h2>My assignments</h2>
+          </div>
+          <span class="task-count" id="visibleCount">0 tasks</span>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search"
+              placeholder="Search assignments..." aria-label="Search assignments">
+          </label>
+          <label class="filter-label" for="statusFilter">Show</label>
+          <select id="statusFilter" aria-label="Filter assignments by status">
+            <option value="all">All tasks</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </div>
+
+        <div id="assignmentList" class="assignment-list" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">📝</div>
+          <h3>No assignments yet</h3>
+          <p>Add your first assignment using the form.</p>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <p>Made for students, one deadline at a time.</p>
+      <p>Your assignments are saved in this browser.</p>
+    </footer>
+  </main>
+</body>
+</html>
+..l
